@@ -58,4 +58,14 @@ public abstract class Lettura {
     public void setNumeroPagine(int numeroPagine) {
         this.numeroPagine = numeroPagine;
     }
+
+    @Override
+    public String toString() {
+        return "Lettura{" +
+                "ISBN='" + ISBN + '\'' +
+                ", titolo='" + titolo + '\'' +
+                ", annoPubblicazione=" + annoPubblicazione +
+                ", numeroPagine=" + numeroPagine +
+                '}';
+    }
 }

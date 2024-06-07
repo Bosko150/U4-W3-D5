@@ -14,7 +14,7 @@ public class libroDAO {
         this.em = em;
     }
 
-    public List<Libro> getLibroByAutore(String autore) {
+    public List<Libro> getLibriByAutore(String autore) {
 
         TypedQuery<Libro> query = em.createQuery("SELECT l FROM Libro l WHERE l.autore = :autore", Libro.class);
         query.setParameter("autore", autore);

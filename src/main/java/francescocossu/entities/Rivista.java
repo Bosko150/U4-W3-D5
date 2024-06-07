@@ -26,4 +26,5 @@ public class Rivista extends Lettura {
     public void setPeriodicità(Periodicità periodicità) {
         this.periodicità = periodicità;
     }
+
 }

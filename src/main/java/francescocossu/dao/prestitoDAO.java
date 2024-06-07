@@ -23,7 +23,7 @@ public class prestitoDAO {
     }
 
     public List<Prestito> getPrestitiScadutiNonRestituiti() {
-        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.dataRestituzione IS NULL AND p.dataScadenza < CURRENT_DATE", Prestito.class);
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.dataRestituzioneEffettiva IS NULL AND p.dataRestituzionePrevista < CURRENT_DATE", Prestito.class);
         return query.getResultList();
 
     }

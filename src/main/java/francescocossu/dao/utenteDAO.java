@@ -24,7 +24,9 @@ public class utenteDAO {
     }
 
     public List<Lettura> getLettureInPrestitoByUtente(int numeroTessera) {
-        TypedQuery<Lettura> query = em.createQuery("SELECT l FROM Lettura l WHERE l.prestiti IS NOT EMPTY AND l.prestiti.utenteID.numeroTessera = :numeroTessera", Lettura.class);
+        TypedQuery<Lettura> query = em.createQuery(
+                "SELECT l FROM Lettura l JOIN l.prestiti p WHERE p.utenteID.numeroTessera = :numeroTessera",
+                Lettura.class);
         query.setParameter("numeroTessera", numeroTessera);
         return query.getResultList();
     }

@@ -1,6 +1,7 @@
 package francescocossu;
 
 import francescocossu.dao.letturaDAO;
+import francescocossu.dao.libroDAO;
 import francescocossu.dao.prestitoDAO;
 import francescocossu.dao.utenteDAO;
 import francescocossu.entities.*;
@@ -19,6 +20,7 @@ public class Application {
         letturaDAO ldao = new letturaDAO(em);
         prestitoDAO pdao = new prestitoDAO(em);
         utenteDAO udao = new utenteDAO(em);
+        libroDAO ldao2 = new libroDAO(em);
 
         Utente utenteFromDB = udao.getUtenteByNumeroTessera(102);
         Utente utenteFromDB2 = udao.getUtenteByNumeroTessera(103);
@@ -62,6 +64,34 @@ public class Application {
         pdao.savePrestito(prestito2);
         pdao.savePrestito(prestito3);*/
 
+        //-Rimozione di un elemento del catalogo dato un codice ISBN
+        //ldao.deleteLetturaByISBN("ISBN6");
+
+        //-Ricerca per ISBN
+        System.out.println("Il libro corrispondente è " + ldao.getLetturaByISBN("ISBN1"));
+
+
+        //-Ricerca per anno di pubblicazione
+        System.out.println("le letture dell'anno 2024 sono:");
+        ldao.getByAnno(2024).forEach(System.out::println);
+
+
+        //-Ricerca per titolo
+        System.out.println("i risultati della ricerca per titolo sono: ");
+        ldao.getByTitolo("The").forEach(System.out::println);
+
+        //-Ricerca per autore
+        System.out.println("i risultati della ricerca per autore sono: ");
+        ldao2.getLibriByAutore("Tolkien").forEach(System.out::println);
+
+
+        //-Ricerca di tutti i prestiti scaduti e non ancora restituiti
+        System.out.println("i prestiti scaduti e non restituiti sono: ");
+        pdao.getPrestitiScadutiNonRestituiti().forEach(System.out::println);
+
+        //-Ricerca degli elementi attualmente in prestito dato un numero di tessera utente
+        System.out.println("Gli elementi attualmente in prestito corrispondenti alla tessera utente sono: ");
+        udao.getLettureInPrestitoByUtente(102).forEach(System.out::println);
 
         em.close();
         emf.close();
