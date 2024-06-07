@@ -26,12 +26,19 @@ public class Prestito {
     }
 
 
-    public Prestito(Utente utenteID, Lettura elementoPrestato, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+    public Prestito(Utente utenteID, Lettura elementoPrestato, LocalDate dataInizioPrestito, LocalDate dataRestituzioneEffettiva) {
         this.utenteID = utenteID;
         this.elementoPrestato = elementoPrestato;
         this.dataInizioPrestito = dataInizioPrestito;
-        this.dataRestituzionePrevista = dataRestituzionePrevista;
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+    }
+
+    public Prestito(Utente utenteID, Lettura elementoPrestato, LocalDate dataInizioPrestito) {
+        this.utenteID = utenteID;
+        this.elementoPrestato = elementoPrestato;
+        this.dataInizioPrestito = dataInizioPrestito;
+        this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
     }
 
     public int getId() {

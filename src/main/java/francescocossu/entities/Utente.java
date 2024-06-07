@@ -24,11 +24,10 @@ public class Utente {
     public Utente() {
     }
 
-    public Utente(String nome, String cognome, LocalDate dataNascita, List<Prestito> prestiti) {
+    public Utente(String nome, String cognome, LocalDate dataNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
-        this.prestiti = prestiti;
     }
 
     public int getNumeroTessera() {

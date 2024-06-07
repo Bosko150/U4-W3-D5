@@ -2,9 +2,12 @@ package francescocossu.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Rivista extends Lettura {
+    @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
 
 

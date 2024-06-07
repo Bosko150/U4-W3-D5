@@ -2,6 +2,7 @@ package francescocossu.dao;
 
 import francescocossu.entities.Prestito;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -12,6 +13,13 @@ public class prestitoDAO {
 
     public prestitoDAO(EntityManager em) {
         this.em = em;
+    }
+
+    public void savePrestito(Prestito prestito) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(prestito);
+        transaction.commit();
     }
 
     public List<Prestito> getPrestitiScadutiNonRestituiti() {

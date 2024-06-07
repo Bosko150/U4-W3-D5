@@ -28,4 +28,8 @@ public class utenteDAO {
         query.setParameter("numeroTessera", numeroTessera);
         return query.getResultList();
     }
+
+    public Utente getUtenteByNumeroTessera(int numeroTessera) {
+        return em.find(Utente.class, numeroTessera);
+    }
 }
