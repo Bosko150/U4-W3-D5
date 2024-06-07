@@ -1,9 +1,8 @@
 package francescocossu.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -14,6 +13,8 @@ public abstract class Lettura {
     private String titolo;
     private int annoPubblicazione;
     private int numeroPagine;
+    @OneToMany(mappedBy = "elementoPrestato")
+    private List<Prestito> prestiti;
 
 
     public Lettura() {

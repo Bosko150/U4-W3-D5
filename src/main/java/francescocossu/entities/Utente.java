@@ -1,11 +1,14 @@
 package francescocossu.entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
 public class Utente {
     @Id
     @GeneratedValue
@@ -13,6 +16,8 @@ public class Utente {
     private String nome;
     private String cognome;
     private LocalDate dataNascita;
+
+    @OneToMany(mappedBy = "utenteID")
     private List<Prestito> prestiti;
 
 

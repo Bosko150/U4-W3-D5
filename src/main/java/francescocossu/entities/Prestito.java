@@ -1,9 +1,7 @@
 package francescocossu.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -13,8 +11,12 @@ public class Prestito {
     @Id
     @GeneratedValue
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
     private Utente utenteID;
-    private String elementoPrestato;
+    @ManyToOne
+    @JoinColumn(name = "elemento_prestato_id")
+    private Lettura elementoPrestato;
     private LocalDate dataInizioPrestito;
     private LocalDate dataRestituzionePrevista;
     private LocalDate dataRestituzioneEffettiva;
@@ -24,7 +26,7 @@ public class Prestito {
     }
 
 
-    public Prestito(Utente utenteID, String elementoPrestato, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+    public Prestito(Utente utenteID, Lettura elementoPrestato, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
         this.utenteID = utenteID;
         this.elementoPrestato = elementoPrestato;
         this.dataInizioPrestito = dataInizioPrestito;
@@ -44,11 +46,11 @@ public class Prestito {
         this.utenteID = utenteID;
     }
 
-    public String getElementoPrestato() {
+    public Lettura getElementoPrestato() {
         return elementoPrestato;
     }
 
-    public void setElementoPrestato(String elementoPrestato) {
+    public void setElementoPrestato(Lettura elementoPrestato) {
         this.elementoPrestato = elementoPrestato;
     }
 
